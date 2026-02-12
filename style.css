@@ -1,0 +1,195 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 700px;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 2.5em;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+
+.controls {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.control-group {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.control-group label {
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 600;
+}
+
+.control-group input {
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.control-group input:focus {
+    outline: none;
+    border-color: #19547b;
+}
+
+.btn-generate,
+.btn-clear {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-generate {
+    background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+    color: white;
+    flex: 1;
+}
+
+.btn-clear {
+    background: linear-gradient(135deg, #ff6b6b 0%, #c92a2a 100%);
+    color: white;
+}
+
+.btn-generate:hover,
+.btn-clear:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-generate:active,
+.btn-clear:active {
+    transform: translateY(0);
+}
+
+.results-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.lotto-set {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.lotto-set-header {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.numbers {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.number {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: pop 0.4s ease-out;
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.number.color-1 { background: linear-gradient(135deg, #fbc531, #e1b12c); }
+.number.color-2 { background: linear-gradient(135deg, #4834d4, #341f97); }
+.number.color-3 { background: linear-gradient(135deg, #eb3b5a, #c92a2a); }
+.number.color-4 { background: linear-gradient(135deg, #a5b1c2, #778ca3); }
+.number.color-5 { background: linear-gradient(135deg, #20bf6b, #0a8149); }
+
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+
+    .number {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1em;
+    }
+}

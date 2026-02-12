@@ -2,6 +2,7 @@ const countInput = document.getElementById('count');
 const generateBtn = document.getElementById('generateBtn');
 const clearBtn = document.getElementById('clearBtn');
 const resultsContainer = document.getElementById('results');
+const themeToggle = document.getElementById('themeToggle');
 
 // 로또 번호 생성 (1~45 중 6개 선택)
 function generateLottoNumbers() {
@@ -77,3 +78,23 @@ countInput.addEventListener('keypress', (e) => {
         generateLotto();
     }
 });
+
+// 테마 관련 기능
+function toggleTheme() {
+    const currentTheme = document.body.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+    document.body.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+}
+
+function loadTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.body.setAttribute('data-theme', savedTheme);
+}
+
+// 테마 토글 버튼
+themeToggle.addEventListener('click', toggleTheme);
+
+// 페이지 로드시 저장된 테마 적용
+loadTheme();

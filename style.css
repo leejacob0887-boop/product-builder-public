@@ -4,37 +4,113 @@
     box-sizing: border-box;
 }
 
+:root {
+    --bg-gradient-1: #ffd89b;
+    --bg-gradient-2: #19547b;
+    --container-bg: white;
+    --text-primary: #333;
+    --text-secondary: #666;
+    --text-tertiary: #555;
+    --input-border: #ddd;
+    --input-focus: #19547b;
+    --set-bg-1: #f8f9fa;
+    --set-bg-2: #e9ecef;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+body[data-theme="dark"] {
+    --bg-gradient-1: #1a1a2e;
+    --bg-gradient-2: #0f3460;
+    --container-bg: #16213e;
+    --text-primary: #eee;
+    --text-secondary: #bbb;
+    --text-tertiary: #ccc;
+    --input-border: #444;
+    --input-focus: #4a90e2;
+    --set-bg-1: #1f2937;
+    --set-bg-2: #374151;
+    --shadow-color: rgba(0, 0, 0, 0.6);
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+    background: linear-gradient(135deg, var(--bg-gradient-1) 0%, var(--bg-gradient-2) 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
+    transition: background 0.3s ease;
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background: var(--container-bg);
+    box-shadow: 0 4px 15px var(--shadow-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 100;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px var(--shadow-color);
+}
+
+.theme-toggle:active {
+    transform: scale(0.95);
+}
+
+.theme-toggle .sun {
+    display: block;
+}
+
+.theme-toggle .moon {
+    display: none;
+}
+
+body[data-theme="dark"] .theme-toggle .sun {
+    display: none;
+}
+
+body[data-theme="dark"] .theme-toggle .moon {
+    display: block;
 }
 
 .container {
-    background: white;
+    background: var(--container-bg);
     border-radius: 20px;
     padding: 40px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 60px var(--shadow-color);
     max-width: 700px;
     width: 100%;
+    transition: background 0.3s ease;
 }
 
 h1 {
     text-align: center;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 10px;
     font-size: 2.5em;
+    transition: color 0.3s ease;
 }
 
 .subtitle {
     text-align: center;
-    color: #666;
+    color: var(--text-secondary);
     margin-bottom: 30px;
     font-size: 1.1em;
+    transition: color 0.3s ease;
 }
 
 .controls {
@@ -53,21 +129,24 @@ h1 {
 
 .control-group label {
     margin-bottom: 8px;
-    color: #555;
+    color: var(--text-tertiary);
     font-weight: 600;
+    transition: color 0.3s ease;
 }
 
 .control-group input {
     padding: 12px;
-    border: 2px solid #ddd;
+    border: 2px solid var(--input-border);
     border-radius: 8px;
     font-size: 16px;
-    transition: border-color 0.3s;
+    background: var(--container-bg);
+    color: var(--text-primary);
+    transition: border-color 0.3s, background 0.3s, color 0.3s;
 }
 
 .control-group input:focus {
     outline: none;
-    border-color: #19547b;
+    border-color: var(--input-focus);
 }
 
 .btn-generate,
@@ -110,11 +189,12 @@ h1 {
 }
 
 .lotto-set {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    background: linear-gradient(135deg, var(--set-bg-1) 0%, var(--set-bg-2) 100%);
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     animation: slideIn 0.3s ease-out;
+    transition: background 0.3s ease;
 }
 
 @keyframes slideIn {
@@ -130,9 +210,10 @@ h1 {
 
 .lotto-set-header {
     font-size: 0.9em;
-    color: #666;
+    color: var(--text-secondary);
     margin-bottom: 10px;
     font-weight: 600;
+    transition: color 0.3s ease;
 }
 
 .numbers {

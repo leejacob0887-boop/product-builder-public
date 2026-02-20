@@ -289,6 +289,36 @@ h1 {
     border-top: 2px solid var(--input-border);
 }
 
+/* 댓글 섹션 */
+.comments-section {
+    margin-top: 50px;
+    padding-top: 40px;
+    border-top: 2px solid var(--input-border);
+}
+
+.comments-title {
+    text-align: center;
+    color: var(--text-primary);
+    font-size: 1.8em;
+    margin-bottom: 8px;
+    transition: color 0.3s ease;
+}
+
+.comments-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: 30px;
+    font-size: 0.95em;
+    transition: color 0.3s ease;
+}
+
+#disqus_thread {
+    background: var(--category-bg);
+    border-radius: 12px;
+    padding: 20px;
+    transition: background 0.3s ease;
+}
+
 .contact-title {
     text-align: center;
     color: var(--text-primary);
